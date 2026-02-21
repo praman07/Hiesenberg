@@ -1,0 +1,930 @@
+/* ==========================================================================
+   HEISENBERG LANDING PAGE - STYLESHEET
+   Separated by section for maximum clarity.
+   ========================================================================== */
+
+/* 1. FONTS & CONFIGURATION
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: ferro;
+  src: url(./assets/FerroRosso.ttf);
+}
+
+/* 2. BASE STYLING
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050505;
+  color: white;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 3. NAVIGATION & HEADER
+   -------------------------------------------------------------------------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.logo span {
+  background-color: #32cd32;
+  color: black;
+  padding: 2px 5px;
+  margin-left: 2px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #32cd32;
+}
+
+/* 4. HERO TRANSFORMATION
+   -------------------------------------------------------------------------- */
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: crosshair;
+}
+
+.character-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.char-side {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.char-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Transformation States */
+.walter {
+  opacity: 1;
+  z-index: 2;
+}
+
+.heisenberg {
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero-section.transformed .walter {
+  opacity: 0;
+}
+
+.hero-section.transformed .heisenberg {
+  opacity: 1;
+}
+
+.hero-section.transformed .char-side img {
+  opacity: 0.7;
+  filter: grayscale(0%) contrast(1.2);
+}
+
+.char-info {
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
+  z-index: 5;
+}
+
+.char-info h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.char-info p {
+  font-size: 1rem;
+  letter-spacing: 10px;
+  color: gray;
+}
+
+/* 5. OVERLAY TEXT & BUTTON
+   -------------------------------------------------------------------------- */
+.hero-overlay-text {
+  position: absolute;
+  z-index: 20;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-overlay-text h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 6vw;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.5s;
+}
+
+.hero-section.transformed .hero-overlay-text h1 {
+  color: #32cd32;
+  text-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+}
+
+.morph-button {
+  background-color: transparent;
+  color: #32cd32;
+  border: 2px solid #32cd32;
+  padding: 1.2rem 3rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  cursor: pointer;
+  margin-top: 3rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: all;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.morph-button:hover {
+  background-color: #32cd32;
+  color: black;
+  box-shadow: 0 0 40px rgba(50, 205, 50, 0.4);
+  transform: translateY(-5px) scale(1.05);
+}
+
+.morph-button:active {
+  transform: scale(0.95);
+}
+
+/* NEW: LAB TESTING SECTION
+   -------------------------------------------------------------------------- */
+.lab-testing-section {
+  padding: 120px 5%;
+  background: white;
+  color: #050505;
+  display: flex;
+  justify-content: center;
+  transition: all 1s ease;
+  opacity: 1;
+}
+
+.lab-testing-section.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.lab-card {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  border-radius: 40px;
+  display: flex;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.product-reveal {
+  flex: 1.2;
+  position: relative;
+  background: black;
+  overflow: hidden;
+}
+
+.meth-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8) contrast(1.2);
+  transition: transform 10s linear;
+}
+
+.lab-card:hover .meth-img {
+  transform: scale(1.1);
+}
+
+.gas-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(50, 205, 50, 0.1), transparent);
+  pointer-events: none;
+}
+
+.test-controls {
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.test-controls h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+#test-status {
+  color: #666;
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-bottom: 50px;
+}
+
+.checker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.question {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.choice-btns {
+  display: flex;
+  gap: 20px;
+}
+
+.choice-btn {
+  flex: 1;
+  padding: 20px;
+  border: 2px solid #050505;
+  background: transparent;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 2px;
+}
+
+.choice-btn.yes:hover {
+  background: #32cd32;
+  border-color: #32cd32;
+  color: black;
+  box-shadow: 0 10px 30px rgba(50, 205, 50, 0.3);
+}
+
+.choice-btn.no:hover {
+  background: #ff4d4d;
+  border-color: #ff4d4d;
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 77, 77, 0.3);
+}
+
+.result-display {
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.result-display.hidden {
+  display: none;
+}
+
+#result-text {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.pure-result {
+  color: #32cd32;
+}
+
+.bad-result {
+  color: #ff4d4d;
+}
+
+#result-subtext {
+  margin-bottom: 40px;
+  color: #666;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.morph-button.small {
+  margin-top: 0;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lab-blur {
+  position: absolute;
+  bottom: -50px;
+  left: -50px;
+  width: 300px;
+  height: 300px;
+  background: rgba(50, 205, 50, 0.05);
+  filter: blur(80px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 6. BANNER QUOTE
+   -------------------------------------------------------------------------- */
+.banner-quote {
+  padding: 10rem 0;
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+.glitch-container h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 8rem;
+  color: white;
+  position: relative;
+  display: inline-block;
+}
+
+/* NEW: METHODOLOGY & PREMIUM BLURS (White & Green Theme)
+   -------------------------------------------------------------------------- */
+.methodology-section {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 100px 5%;
+  background: white;
+  /* Theme Shift to White */
+  color: #050505;
+}
+
+.glass-card {
+  position: relative;
+  width: 500px;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.tag {
+  color: #32cd32;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+}
+
+.card-content h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  margin: 15px 0;
+  text-transform: uppercase;
+}
+
+.card-content p {
+  line-height: 1.6;
+  color: #444;
+}
+
+.blur-blob {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(50, 205, 50, 0.15);
+  filter: blur(60px);
+  border-radius: 50%;
+}
+
+.blur-blob.green {
+  background: rgba(50, 205, 50, 0.3);
+  bottom: -50px;
+  left: -50px;
+  top: auto;
+  right: auto;
+}
+
+/* STATS SECTION
+   -------------------------------------------------------------------------- */
+.stats-section {
+  padding: 80px 5%;
+  background: #32cd32;
+  /* Bold Green Background */
+  color: white;
+}
+
+.stat-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item h4 {
+  font-size: 5rem;
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 10px;
+}
+
+.blur-text {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.stat-divider {
+  width: 2px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.stat-item p {
+  letter-spacing: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* 7. EXPANDING PILLAR GALLERY
+   -------------------------------------------------------------------------- */
+.gallery-section {
+  padding: 8rem 2%;
+  text-align: center;
+  background: black;
+}
+
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 5rem;
+  letter-spacing: 10px;
+}
+
+.stacked-gallery {
+  display: flex;
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 15px;
+  height: 650px;
+}
+
+.gallery-card {
+  flex: 0.7;
+  height: 100%;
+  position: relative;
+  background: #111;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.4);
+  transition: all 0.7s ease;
+}
+
+.gallery-card span {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #32cd32;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.gallery-card:hover {
+  flex: 5;
+  border-color: #32cd32;
+  z-index: 10;
+}
+
+.gallery-card:hover img {
+  filter: grayscale(0%) brightness(0.9);
+}
+
+.gallery-card:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 8. FINAL SILHOUETTE SECTION
+   -------------------------------------------------------------------------- */
+.final-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, black, #111);
+}
+
+.silhouette-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.silhouette-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.2);
+}
+
+.final-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.final-text h3 {
+  font-size: 1.5rem;
+  color: #d4af37;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.final-text h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 8rem;
+  letter-spacing: 5px;
+}
+
+/* 9. THE AFTERMATH (White Theme)
+   -------------------------------------------------------------------------- */
+.aftermath-section {
+  padding: 120px 5%;
+  background: white;
+  color: #050505;
+}
+
+.aftermath-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aftermath-card {
+  position: relative;
+  flex: 1;
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.aftermath-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.aftermath-card .year {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  color: #32cd32;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.aftermath-card h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.aftermath-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.blur-overlay {
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 150px;
+  height: 150px;
+  background: rgba(0, 0, 0, 0.03);
+  filter: blur(40px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.blur-overlay.green {
+  background: rgba(50, 205, 50, 0.2);
+}
+
+/* 10. CHEMICAL LEGACY (Periodic Grid)
+   -------------------------------------------------------------------------- */
+.legacy-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 100px 5%;
+  background: #050505;
+}
+
+.symbol-card {
+  width: 250px;
+  height: 250px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.symbol-card.active,
+.symbol-card:hover {
+  background: #32cd32;
+  border-color: #32cd32;
+  transform: scale(1.1);
+  box-shadow: 0 0 50px rgba(50, 205, 50, 0.3);
+}
+
+.symbol-card.active h3,
+.symbol-card:hover h3,
+.symbol-card.active span,
+.symbol-card:hover span {
+  color: black;
+}
+
+.symbol-card .atomic {
+  font-size: 1rem;
+  font-weight: 700;
+  align-self: flex-start;
+}
+
+.symbol-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 5rem;
+  text-align: center;
+}
+
+.symbol-card .element {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.blur-glass {
+  backdrop-filter: blur(15px);
+}
+
+/* 11. TERRITORY EXPANSION
+   -------------------------------------------------------------------------- */
+.territory-section {
+  padding: 120px 5%;
+  background: white;
+  color: #050505;
+  text-align: center;
+}
+
+.territory-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+}
+
+.glow-line {
+  width: 100px;
+  height: 4px;
+  background: #32cd32;
+  margin: 0 auto 60px;
+  box-shadow: 0 0 15px rgba(50, 205, 50, 0.5);
+}
+
+.territory-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.territory-node {
+  flex: 1;
+  padding: 60px 40px;
+  background: rgba(245, 245, 245, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  transition: all 0.4s ease;
+}
+
+.territory-node:hover {
+  background: white;
+  transform: scale(1.02);
+  border-color: #32cd32;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+}
+
+.territory-node .coord {
+  display: block;
+  font-size: 0.7rem;
+  color: #32cd32;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.territory-node h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.territory-node p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 12. TESTIMONIALS (Premium Citations)
+   -------------------------------------------------------------------------- */
+.testimonials-section {
+  padding: 100px 5%;
+  background: #050505;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.testimonial-card {
+  width: 500px;
+  padding: 60px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card p {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.8;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.user-info .name {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.user-info .role {
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: #32cd32;
+  font-weight: 700;
+}
+
+.green-glow {
+  border-color: #32cd32;
+  background: rgba(50, 205, 50, 0.02);
+  box-shadow: inset 0 0 30px rgba(50, 205, 50, 0.05);
+}
+
+/* 13. FOOTER
+   -------------------------------------------------------------------------- */
+footer {
+  padding: 3rem;
+  text-align: center;
+  color: #444444;
+  font-size: 0.8rem;
+}
+
+/* 10. RESPONSIVE LAYOUTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .stacked-gallery {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .gallery-card {
+    width: 100%;
+    height: 300px;
+    flex: none !important;
+    margin-bottom: 10px;
+  }
+
+  .gallery-card:hover {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .char-info h2 {
+    font-size: 2rem;
+  }
+
+  .glitch-container h2 {
+    font-size: 3rem;
+  }
+
+  .final-text h1 {
+    font-size: 3rem;
+  }
+}
