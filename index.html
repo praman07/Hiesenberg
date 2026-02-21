@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heisenberg | The Danger</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&family=Inter:wght@300;400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="smoke-overlay"></div>
+
+    <header>
+        <div class="logo">BR<span>BA</span></div>
+        <nav>
+            <ul>
+                <li><a href="#hero">The Transformation</a></li>
+                <li><a href="#gallery">The Evidence</a></li>
+                <li><a href="#final">The Name</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="character-container">
+                <!-- Walter White Side -->
+                <div class="char-side walter active">
+                    <img src="assets/herosectionnonhoverimage1.jpg" alt="Walter White">
+                    <div class="char-info">
+                        <h2>Walter White</h2>
+                        <p>CHEMISTRY TEACHER</p>
+                    </div>
+                </div>
+                <!-- Heisenberg Side -->
+                <div class="char-side heisenberg">
+                    <img src="assets/Hiesenbergg.jpg" alt="Heisenberg">
+                    <div class="char-info">
+                        <h2>Heisenberg</h2>
+                        <p>THE DANGER</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-overlay-text">
+                <h1 id="main-quote">I am not in danger</h1>
+                <button id="morph-btn" class="morph-button">COOK THE PRODUCT</button>
+            </div>
+        </section>
+
+        <section class="banner-quote">
+            <div class="glitch-container">
+                <h2 data-text="SAY MY NAME">SAY MY NAME</h2>
+            </div>
+        </section>
+
+        <section id="lab-testing" class="lab-testing-section hidden">
+            <div class="lab-card blur-glass">
+                <div class="product-reveal">
+                    <img src="assets/meth.jpg" alt="The Product" class="meth-img">
+                    <div class="gas-effect"></div>
+                </div>
+                <div class="test-controls">
+                    <h3>FINAL QUALITY CONTROL</h3>
+                    <p id="test-status">SAY MY NAME... AND CHECK THE BATCH.</p>
+
+                    <div id="purity-checker" class="checker-container">
+                        <p class="question">WAS THIS COOKED BY HEISENBERG?</p>
+                        <div class="choice-btns">
+                            <button class="choice-btn yes" onclick="checkPurity(true)">YES</button>
+                            <button class="choice-btn no" onclick="checkPurity(false)">NO</button>
+                        </div>
+                    </div>
+
+                    <div id="test-result" class="result-display hidden">
+                        <h4 id="result-text"></h4>
+                        <p id="result-subtext"></p>
+                        <button class="morph-button small" onclick="resetTest()">NEW BATCH</button>
+                    </div>
+                </div>
+                <div class="lab-blur"></div>
+            </div>
+        </section>
+
+        <section class="methodology-section">
+            <div class="glass-card">
+                <div class="card-content">
+                    <span class="tag">01. THE METHODOLOGY</span>
+                    <h3>Purity & Precision</h3>
+                    <p>Our process involves a complete synthesis of high-grade chemicals, ensuring a 99.1% pure product.
+                        No shortcuts. No chili powder.</p>
+                    <div class="blur-blob"></div>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="card-content">
+                    <span class="tag">02. THE LOGISTICS</span>
+                    <h3>Global Distribution</h3>
+                    <p>From the desert of Albuquerque to the streets of the Czech Republic. The empire knows no borders
+                        when the blue hits the market.</p>
+                    <div class="blur-blob green"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stat-container">
+                <div class="stat-item">
+                    <h4 class="blur-text">99.1%</h4>
+                    <p>PRODUCT PURITY</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h4 class="blur-text">$80M</h4>
+                    <p>CASH RESERVE</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h4 class="blur-text">10+</h4>
+                    <p>INTERNATIONAL HUBS</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <h2 class="section-title">THE EVIDENCE</h2>
+            <div class="stacked-gallery">
+                <div class="gallery-card">
+                    <img src="assets/lab.jpg" alt="The Lab">
+                    <span>The Lab</span>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/desert.jpg" alt="The Desert">
+                    <span>The Desert</span>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/meth.jpg" alt="The Product">
+                    <span>The Product</span>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/thehat.jpg" alt="The Icon">
+                    <span>The Icon</span>
+                </div>
+                <div class="gallery-card">
+                    <img src="assets/theempire.jpg" alt="The Empire">
+                    <span>The Empire</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="final" class="final-section">
+            <div class="silhouette-container">
+                <img src="assets/Hiesenberg.jpg" alt="Heisenberg Silhouette">
+                <div class="final-text">
+                    <h3>"You clearly don't know who you're talking to..."</h3>
+                    <h1>I AM THE DANGER.</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="aftermath-section">
+            <div class="aftermath-container">
+                <div class="aftermath-card">
+                    <div class="blur-overlay"></div>
+                    <span class="year">2008</span>
+                    <h4>The Awakening</h4>
+                    <p>A diagnosis triggers a transformation that would change the desert forever.</p>
+                </div>
+                <div class="aftermath-card active">
+                    <div class="blur-overlay green"></div>
+                    <span class="year">2010</span>
+                    <h4>The Peak</h4>
+                    <p>99.1% purity achieved. The blue market is established globally.</p>
+                </div>
+                <div class="aftermath-card">
+                    <div class="blur-overlay"></div>
+                    <span class="year">2013</span>
+                    <h4>The Legacy</h4>
+                    <p>The name Heisenberg becomes legend. The king retires.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="legacy-grid">
+            <div class="symbol-card blur-glass">
+                <span class="atomic">35</span>
+                <h3>Br</h3>
+                <span class="element">Bromine</span>
+            </div>
+            <div class="symbol-card blur-glass active">
+                <span class="atomic">56</span>
+                <h3>Ba</h3>
+                <span class="element">Barium</span>
+            </div>
+            <div class="symbol-card blur-glass">
+                <span class="atomic">99.1</span>
+                <h3>Me</h3>
+                <span class="element">Methamphetamine</span>
+            </div>
+        </section>
+
+        <section class="territory-section">
+            <div class="territory-header">
+                <h2>TERRITORY EXPANSION</h2>
+                <div class="glow-line"></div>
+            </div>
+            <div class="territory-grid">
+                <div class="territory-node">
+                    <span class="coord">35.0844° N, 106.6504° W</span>
+                    <h4>ALBUQUERQUE</h4>
+                    <p>Primary Synthesis Hub. Logistics central.</p>
+                </div>
+                <div class="territory-node active">
+                    <span class="coord">31.7619° N, 106.4850° W</span>
+                    <h4>EL PASO</h4>
+                    <p>Frontier crossing. Distribution gateway.</p>
+                </div>
+                <div class="territory-node">
+                    <span class="coord">50.0755° N, 14.4378° E</span>
+                    <h4>PRAGUE</h4>
+                    <p>International Expansion. European foothold.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="testimonial-card blur-glass">
+                <p>"The finest chemist I've ever seen. A true artist of the trade."</p>
+                <div class="user-info">
+                    <span class="name">GALE BOETTICHER</span>
+                    <span class="role">SENIOR CHEMIST</span>
+                </div>
+            </div>
+            <div class="testimonial-card blur-glass green-glow">
+                <p>"Professionals. A level of quality that is simply unmatched in the market."</p>
+                <div class="user-info">
+                    <span class="name">LYDIA RODARTE-QUAYLE</span>
+                    <span class="role">MADRIGAL ELECTROMOTIVE</span>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Heisenberg Visual Experience. Purely for demonstration.Made by PRAMAN BHOGAL</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
